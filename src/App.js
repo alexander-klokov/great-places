@@ -5,9 +5,12 @@ import './App.css'
 
 import {Users} from './user/pages/Users'
 import {NewPlace} from './places/pages/NewPlace'
+import {MainNavigation} from './shared/components/Navigation/MainNavigation'
 
 export const App = () => (
   <div>
+    <MainNavigation />
+    <main>
     <Switch>
       <Route exact path="/">
         <Users />
@@ -17,5 +20,6 @@ export const App = () => (
       </Route>
       <Redirect to="/" />
     </Switch>
+    </main>
   </div>
 )
