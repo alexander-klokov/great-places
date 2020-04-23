@@ -7,7 +7,7 @@
   .user-item a {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 90%; 
     height: 100%;
     text-decoration: none;
     padding: 1rem;
