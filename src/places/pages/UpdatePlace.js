@@ -9,6 +9,8 @@ import {
 } from '../../shared/util/validators'
 import {DUMMY_PLACES} from '../../shared/util/dummyPlaces'
 
+import './PlaceForm.css'
+
 export const UpdatePlace = () => {
   const placeId = useParams().placeId
 
@@ -23,7 +25,7 @@ export const UpdatePlace = () => {
   }
 
   return (
-    <form>
+    <form className="place-form">
       <Input
         id="title"
         element="input"
