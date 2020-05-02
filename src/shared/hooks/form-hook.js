@@ -18,7 +18,12 @@ const formReducer = (state, action) => {
           [action.inputId]: { value: action.value, isValid: action.isValid }
         },
         isValid: formIsValid
-      };
+      }
+    case 'SET_DATA':
+        return {
+          inputs: action.inputs,
+          isValid: action.formIdValid
+        }
     default:
       return state
   }
@@ -39,5 +44,13 @@ export const useForm = (initialInputs, initialFormValidity) => {
     })
   }, [])
 
-  return [formState, inputHandler]
+  const setFormData = useCallback((inputData, formValidity) => {
+    dispatch({
+        type: 'SET_DATA',
+        inputs: inputData,
+        formIdValid: formValidity
+    })
+  }, []) 
+
+  return [formState, inputHandler, setFormData]
 }
