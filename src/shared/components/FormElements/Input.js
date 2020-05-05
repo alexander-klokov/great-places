@@ -22,7 +22,7 @@ const inputReducer = (state, action) => {
   }
 }
 
-const Input = props => {
+export const Input = props => {
 
   const [inputState, dispatch] = 
     useReducer(inputReducer, {
@@ -77,5 +77,3 @@ const Input = props => {
     </div>
   )
 }
-
-export default Input
