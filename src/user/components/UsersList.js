@@ -17,7 +17,7 @@ export const UsersList = props => {
     return <ul className="users-list">
       {props.items.map(user => {
         const {id, image, name, places} = user
-        return <UserItem key={id} id={id} image={image} name={name} placesCount={places} />
+        return <UserItem key={id} id={id} image={image} name={name} placesCount={places.length} />
         })}
     </ul>
 }
