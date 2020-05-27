@@ -10,7 +10,6 @@ import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH
 } from '../../shared/util/validators'
-import {DUMMY_PLACES} from '../../shared/util/dummyPlaces'
 
 import './PlaceForm.css'
 
@@ -32,8 +31,8 @@ export const UpdatePlace = () => {
     false
   )
 
-  const identifiedPlace = DUMMY_PLACES.find(p => p.id === placeId)
-
+  const identifiedPlace = {placeId} 
+  
   useEffect(() => {
     if (identifiedPlace) {
       setFormData({
