@@ -35,6 +35,8 @@ export const PlaceItem = props => {
     }
   }
 
+  const enableEditDelete = auth.userId === props.creatorId
+
   return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
@@ -81,8 +83,8 @@ export const PlaceItem = props => {
         </div>
         <div className="place-item__actions">
           <Button inverse onClick={openMapHandler}>VIEW ON MAP</Button>
-          {auth.isLoggedIn && <Button to={`/places/${props.id}`}>EDIT</Button>}
-          {auth.isLoggedIn && <Button danger onClick={showDeleteWarningHandler}>DELETE</Button>}
+          {enableEditDelete && <Button to={`/places/${props.id}`}>EDIT</Button>}
+          {enableEditDelete && <Button danger onClick={showDeleteWarningHandler}>DELETE</Button>}
         </div>
       </Card>
     </li>

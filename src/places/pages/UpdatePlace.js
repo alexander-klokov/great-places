@@ -42,8 +42,6 @@ export const UpdatePlace = () => {
     false
   )
 
-  const identifiedPlace = {placeId} 
-
   useEffect(() => {
     const fetchPlaces = async () => {
       try {
