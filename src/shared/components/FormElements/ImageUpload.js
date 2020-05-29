@@ -12,18 +12,14 @@ export const ImageUpload = props => {
   const filePickerRef = useRef()
 
   const pickedHandler = event => {
-    let pickedFile
-    let fileIsValid = isValid
-    if (event.target.files && event.target.files.length === 1) {
-        pickedFile = event.target.files[0]
-        setFile(pickedFile)
-        setIsValid(true)
-        fileIsValid = true
-    } else {
-        setIsValid(false)
-        fileIsValid = false
-    }
-    props.onInput(props.id, pickedFile, fileIsValid)
+    const canHandleFile = event.target.files && event.target.files.length === 1
+    const maybePickedFile = canHandleFile ? event.target.files[0] : undefined
+    const fileIsValid = maybePickedFile
+
+    setFile(maybePickedFile)
+    setIsValid(fileIsValid)
+
+    props.onInput(props.id, maybePickedFile, fileIsValid)
   }
 
   const pickImageHandler = () => {
