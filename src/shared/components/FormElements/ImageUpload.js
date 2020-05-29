@@ -32,7 +32,6 @@ export const ImageUpload = props => {
       }
       const fileReader = new FileReader()
       fileReader.onload = () => {
-        console.error(fileReader.result)
         setPreviewUrl(fileReader.result)
       }
       fileReader.readAsDataURL(file)
