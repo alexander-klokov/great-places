@@ -45,7 +45,8 @@ export const Auth = () => {
       setFormData(
         {
           ...formState.inputs,
-          name: undefined
+          name: undefined,
+          image: undefined
         },
         formState.inputs.email.isValid && formState.inputs.password.isValid
       );
@@ -55,6 +56,10 @@ export const Auth = () => {
           ...formState.inputs,
           name: {
             value: '',
+            isValid: false
+          },
+          image: {
+            value: null,
             isValid: false
           }
         },
@@ -126,7 +131,7 @@ export const Auth = () => {
             onInput={inputHandler}
           />
         )}
-        {!isLoginMode && <ImageUpload center id='image' />}
+        {!isLoginMode && <ImageUpload center id='image' onInput={inputHandler} />}
         <Input
           element="input"
           id="email"
