@@ -12,15 +12,22 @@ import {UserPlaces} from './places/pages/UserPlaces'
 import {MainNavigation} from './shared/components/Navigation/MainNavigation'
 import {AuthContext} from './shared/context/auth-context'
 
+const MS_IN_HOUR = 1000 * 60 * 60
+
 export const App = () => {
 
   const [token, setToken] = useState(false)
   const [userId, setUserId] = useState(null)
 
-  const login = useCallback((uid, token) => {
+  const login = useCallback((uid, token, expirationDate) => {
     setUserId(uid)
     setToken(token)
-    localStorage.setItem('userData', JSON.stringify({userId: uid, token}))
+    const tokenExpirationDate = 
+      expirationDate || new Date(new Date().getTime() + MS_IN_HOUR)
+    localStorage.setItem(
+      'userData', 
+      JSON.stringify({userId: uid, token, expiration: tokenExpirationDate.toISOString()})
+    )
   }, [])
 
   const logout = useCallback(uid => {
@@ -31,8 +38,9 @@ export const App = () => {
 
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem('userData'))
-    if (storedData && storedData.token) {
-      login(storedData.userId, storedData.token)
+    const expirationDate = new Date(storedData.expiration)
+    if (storedData && storedData.token && expirationDate > new Date()) {
+      login(storedData.userId, storedData.token, expirationDate)
     }
   }, [login])
 
