@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom'
 import {BrowserRouter as Router} from 'react-router-dom'
 
@@ -20,12 +20,21 @@ export const App = () => {
   const login = useCallback((uid, token) => {
     setUserId(uid)
     setToken(token)
+    localStorage.setItem('userData', JSON.stringify({userId: uid, token}))
   }, [])
 
   const logout = useCallback(uid => {
     setUserId(null)
     setToken(null)
+    localStorage.removeItem('userData')
   }, [])
+
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem('userData'))
+    if (storedData && storedData.token) {
+      login(storedData.userId, storedData.token)
+    }
+  }, [login])
 
   const routes = token ? (
       <Switch>
