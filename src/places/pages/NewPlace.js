@@ -16,7 +16,7 @@ import {VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH} from '../../shared/util/validato
 
 import './PlaceForm.css'
 
-export const NewPlace = () => {
+const NewPlace = () => {
   const auth = useContext(AuthContext)
   const {isLoading, error, sendRequest, clearError} = useHttpClient()
 
@@ -106,3 +106,5 @@ export const NewPlace = () => {
     </React.Fragment>
   )
 }
+
+export default NewPlace

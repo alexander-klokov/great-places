@@ -18,7 +18,7 @@ import {
 
 import './PlaceForm.css'
 
-export const UpdatePlace = () => {
+const UpdatePlace = () => {
   const auth = useContext(AuthContext)
   const {isLoading, error, sendRequest, clearError} = useHttpClient()
   const [loadedPlace, setLoadedPlace] = useState()
@@ -130,3 +130,5 @@ export const UpdatePlace = () => {
     </React.Fragment>
   )
 }
+
+export default UpdatePlace

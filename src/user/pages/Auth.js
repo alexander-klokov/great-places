@@ -20,7 +20,7 @@ import {
 
 import './Auth.css'
 
-export const Auth = () => {
+const Auth = () => {
   const auth = useContext(AuthContext)
 
   const [isLoginMode, setIsLoginMode] = useState(true)
@@ -162,3 +162,5 @@ export const Auth = () => {
     </React.Fragment>
   )
 }
+
+export default Auth
