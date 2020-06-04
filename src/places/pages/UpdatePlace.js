@@ -25,7 +25,7 @@ export const UpdatePlace = () => {
   const history = useHistory()
 
   const placeId = useParams().placeId
-  const url = `http://localhost:5000/api/places/${placeId}`
+  const url = process.env.REACT_APP_BACKEND_URL + `/places/${placeId}`
 
 
   const [formState, inputHandler, setFormData] = useForm(

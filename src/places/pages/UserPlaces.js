@@ -13,7 +13,7 @@ export const UserPlaces = () => {
   const {isLoading, error, sendRequest, clearError} = useHttpClient()
 
   const userId = useParams().userId
-  const url = `http://localhost:5000/api/places/user/${userId}`
+  const url = process.env.REACT_APP_BACKEND_URL + `/places/user/${userId}`
 
   useEffect(() => {
     const fetchPlaces = async () => {
