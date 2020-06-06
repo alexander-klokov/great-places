@@ -25,3 +25,5 @@ yarn-error.log*
 # aklokov
 .env
 .env.production
+.firebase
+.firebaserc
